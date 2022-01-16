@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ItemsFragment">
+
+        <include layout="@layout/activity_add_items_toolbar"
+                android:id="@+id/itemstoolbar"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/items"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/items_recyclerview"-->
+<!--            android:text="@string/items"-->
+<!--            android:textSize="28sp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:fontFamily="@font/inter_semibold"-->
+<!--            />-->
+
+        <ListView
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            app:layout_constraintTop_toBottomOf="@id/itemstoolbar"
+            android:id="@+id/recyclebarang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="80dp"
+            />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
