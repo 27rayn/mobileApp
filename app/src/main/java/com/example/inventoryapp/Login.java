@@ -84,6 +84,7 @@ public class Login extends AppCompatActivity {
     }
 
     //  session is working in here
+    //no need to re-login if the user exited the app
     @Override
     protected void onResume() {
         sp = getSharedPreferences("userData", Context.MODE_PRIVATE);
