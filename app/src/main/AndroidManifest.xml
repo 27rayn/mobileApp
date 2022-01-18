@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InventoryApp">
         <activity
+            android:name=".StockOutUpdate"
+            android:exported="false" />
+        <activity
             android:name=".AddItemsToolbar"
             android:exported="false" />
         <activity

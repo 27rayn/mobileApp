@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
     String username;
     SharedPreferences sp;
     ImageButton opencam;
-    Button registeritems, stockin;
+    Button registeritems, stockin, stockout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
         TVName = view.findViewById(R.id.TVName);
         registeritems = view.findViewById(R.id.registeritems);
         stockin = view.findViewById(R.id.Stockin);
+        stockout = view.findViewById(R.id.Stockout);
 
         //GetUsername From Database
         sp = getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
@@ -81,6 +82,15 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent open_cam = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(open_cam, 100);
+            }
+        });
+
+        stockout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toStockOut;
+                toStockOut = new Intent(getContext(), StockOutUpdate.class);
+                startActivity(toStockOut);
             }
         });
 

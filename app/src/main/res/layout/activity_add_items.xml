@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".AddItems"
     >
     <include layout="@layout/activity_toolbar"
@@ -51,121 +52,99 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/additemsphoto" />
 
-    <com.google.android.material.textfield.TextInputLayout
+
+    <Button
         android:id="@+id/generate"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="284dp"
         android:layout_height="48dp"
         android:layout_marginHorizontal="14dp"
-        android:layout_marginTop="16dp"
-        android:hint="Select barcode input method."
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="12dp"
+        android:drawableEnd="@drawable/ic_cheveron_right"
         android:elevation="0dp"
-        android:textColorHint="#ced4da"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        app:boxBackgroundMode="none"
-        app:boxBackgroundColor="@color/white"
+        android:text="Select barcode input method."
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/graybd"
+        app:layout_constraintBottom_toBottomOf="@+id/barcodetext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/additemsphoto">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/generatebarcode"
-            android:layout_width="match_parent"
-            android:elevation="0dp"
-            android:layout_height="match_parent"
-            android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
-
+        app:layout_constraintTop_toBottomOf="@id/additemsphoto"/>
 
     <TextView
         android:id="@+id/itemsname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="56dp"
         android:fontFamily="@font/inter_regular"
         android:text="Item"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/itemssss"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barcodetext" />
+        app:layout_constraintTop_toBottomOf="@+id/barcodetext"
+        app:layout_constraintVertical_bias="0.745" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
         android:id="@+id/itemssss"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-        android:layout_width="284dp"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="14dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="12dp"
-        android:elevation="0dp"
-        android:hint="Input item name."
-        android:textColorHint="#ced4da"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="none"
-        app:hintTextColor="@color/primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/generate">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/itemsnameform"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="0dp"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <TextView
-        android:id="@+id/stockname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="56dp"
-        android:fontFamily="@font/inter_regular"
-        android:textColor="@color/black"
-        android:text="Stock In"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemsname" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/stockitem"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="284dp"
         android:layout_height="48dp"
         android:layout_marginHorizontal="14dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="12dp"
+        android:background="@color/white"
+        android:elevation="0dp"
+        android:hint="Input item name."
+        android:textColorHint="#ced4da"
+        app:hintTextColor="@color/primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/generate" />
+
+    <TextView
+        android:id="@+id/stockname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="Stock In"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stockitem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/stockitem" />
+
+    <EditText
+        android:id="@+id/stockitem"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+        android:layout_width="284dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="12dp"
+        android:background="@color/white"
         android:elevation="0dp"
         android:hint="Input your items stock."
         android:textColorHint="#ced4da"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="none"
-        app:hintTextColor="@color/primary"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/itemssss">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/stockitemform"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="0dp"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/itemssss" />
 
     <TextView
         android:id="@+id/suppliername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="56dp"
         android:fontFamily="@font/inter_regular"
-        android:textColor="@color/black"
         android:text="Supplier"
+        android:textColor="@color/black"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/supplieret"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stockname" />
+        app:layout_constraintTop_toTopOf="@+id/supplieret" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
         android:id="@+id/supplieret"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:layout_width="284dp"
@@ -176,19 +155,9 @@
         android:elevation="0dp"
         android:hint="Input supplier name."
         android:textColorHint="#ced4da"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="none"
-        app:hintTextColor="@color/primary"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stockitem">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/supplierform"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="0dp"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@id/stockitem"/>
 
     <Button
         android:id="@+id/saveaaddeditem"
@@ -203,6 +172,7 @@
         android:fontFamily="@font/inter_medium"
         android:textColor="@color/white"
         android:background="@drawable/btn_primary"
+        android:enabled="false"
         />
 
 

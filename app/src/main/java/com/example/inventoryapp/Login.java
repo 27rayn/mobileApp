@@ -46,6 +46,8 @@ public class Login extends AppCompatActivity {
         TVAlready = findViewById(R.id.TVAlready);
         TVAlready1 = findViewById(R.id.TVAlready1);
 
+
+
         sp = getSharedPreferences("userData", MODE_PRIVATE);
 
         progressDialog = new ProgressDialog(this);
@@ -107,6 +109,7 @@ public class Login extends AppCompatActivity {
         }else {
             kirimData();
             getUserData();
+
         }
     }
 

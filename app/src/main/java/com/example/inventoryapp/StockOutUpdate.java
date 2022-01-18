@@ -3,7 +3,6 @@ package com.example.inventoryapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,22 +24,18 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class StockInUpdate extends AppCompatActivity {
+public class StockOutUpdate extends AppCompatActivity {
 
-    private ListView listitemstockin;
+    private ListView listitemstockout;
     private ItemsModel adapter;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private EditText updateStockIn;
-    private Button applystockin, cancelstockin;
-    private TextView TVitemsnamepopup, TVstockinpopup;
-
-    int count = 0;
-    Button BTNincrement, BTNdecrement;
-    String number;
+    private EditText updateStockOut;
+    private Button applystockout, cancelstockout;
+    private TextView TVitemsnamepopup, TVstockoutpopup;
 
 
-    ImageButton backtoolbarstockin;
+    ImageButton backtoolbarstockout;
     ArrayList<String> nama=new ArrayList<>();
     ArrayList<String>perusahaan=new ArrayList<>();
     ArrayList<String>foto=new ArrayList<>();
@@ -49,12 +44,12 @@ public class StockInUpdate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stock_in_update);
+        setContentView(R.layout.activity_stock_out_update);
 
-        listitemstockin = findViewById(R.id.listitemstockin);
-        backtoolbarstockin = findViewById(R.id.backtoolbarstockin);
+        listitemstockout = findViewById(R.id.listitemstockin);
+        backtoolbarstockout = findViewById(R.id.backtoolbarstockin);
 
-        backtoolbarstockin.setOnClickListener(new View.OnClickListener() {
+        backtoolbarstockout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -62,9 +57,7 @@ public class StockInUpdate extends AppCompatActivity {
         });
 
         getDataBarang();
-
     }
-
     public void getDataBarang(){
         AndroidNetworking.get("https://tkjb2019.com/mobile/api_kelompok_2/sm/getDatabarang.php")
                 .setTag("Get Data")
@@ -85,8 +78,8 @@ public class StockInUpdate extends AppCompatActivity {
                                     perusahaan.add(ja.getJSONObject(i).getString("perusahaan"));
                                     foto.add(ja.getJSONObject(i).getString("foto"));
                                     stok.add(ja.getJSONObject(i).getString("stok"));
-                                    adapter = new ItemsModel(StockInUpdate.this, nama, perusahaan, foto, stok);
-                                    listitemstockin.setAdapter(adapter);
+                                    adapter = new ItemsModel(StockOutUpdate.this, nama, perusahaan, foto, stok);
+                                    listitemstockout.setAdapter(adapter);
                                 }
 
 //                                //Menampilkan data berbentuk adapter menggunakan class CLVDataUser
@@ -96,11 +89,11 @@ public class StockInUpdate extends AppCompatActivity {
 
 
                                 //edit and delete
-                                listitemstockin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                listitemstockout.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                                         Log.d("TestKlik", "" + nama.get(position));
-                                        Toast.makeText(StockInUpdate.this, nama.get(position), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(StockOutUpdate.this, nama.get(position), Toast.LENGTH_SHORT).show();
                                         createUpdateStockDialog();
                                         TVitemsnamepopup.setText(nama.get(position));
 
@@ -118,7 +111,7 @@ public class StockInUpdate extends AppCompatActivity {
                                 });
 
                             } else {
-                                Toast.makeText(StockInUpdate.this, "Gagal Mengambil Data", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(StockOutUpdate.this, "Gagal Mengambil Data", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -133,69 +126,22 @@ public class StockInUpdate extends AppCompatActivity {
 
                     }
                 });
-
-
     }
-
-
-//    public boolean getNumbers(){
-//
-//        updateStockIn = (EditText) findViewById(R.id.inputstockquantity);
-//
-//        String number = updateStockIn.getText().toString();
-//
-//        return true;
-//    }
-
-//    public void increment (View view){
-//
-//    }
-//
-//    public void decrement (View view){
-//        if(getNumbers()&&count<=0){
-//            count = 0;
-//        }else{
-//            int y = count--;
-//            updateStockIn.setText(Integer.toString(y));
-//        }
-//    }
 
     public void createUpdateStockDialog(){
 
         dialogBuilder = new AlertDialog.Builder(this);
-        final  View stockUpdatePopupView = getLayoutInflater().inflate(R.layout.popupstockin, null);
+        final  View stockUpdatePopupView = getLayoutInflater().inflate(R.layout.popupstockout, null);
 
-        TVstockinpopup = stockUpdatePopupView.findViewById(R.id.TVstockinpopup);
+        TVstockoutpopup = stockUpdatePopupView.findViewById(R.id.TVstockinpopup);
         TVitemsnamepopup = stockUpdatePopupView.findViewById(R.id.TVitemsnamepopup);
-        updateStockIn = stockUpdatePopupView.findViewById(R.id.inputstockquantity);
-//        BTNincrement = stockUpdatePopupView.findViewById(R.id.BTNincrement);
-//        BTNdecrement = stockUpdatePopupView.findViewById(R.id.BTNdecrement);
-        applystockin = stockUpdatePopupView.findViewById(R.id.ApplyStockIn);
-        cancelstockin = stockUpdatePopupView.findViewById(R.id.CancelStockIn);
+        updateStockOut = stockUpdatePopupView.findViewById(R.id.inputstockquantity);
+        applystockout = stockUpdatePopupView.findViewById(R.id.ApplyStockOut);
+        cancelstockout = stockUpdatePopupView.findViewById(R.id.CancelStockOut);
 
-        updateStockIn.setBackgroundResource(R.color.white);
+        updateStockOut.setBackgroundResource(R.color.white);
 
-//        BTNincrement.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                    count++;
-//                    updateStockIn.get
-//                }
-//        });
-
-//        BTNdecrement.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(count<=0){
-//                    count = 0;
-//                }else{
-//                    count--;
-//                    updateStockIn.setText(String.valueOf(count));
-//                }
-//            }
-//        });
-
-        cancelstockin.setOnClickListener(new View.OnClickListener() {
+        cancelstockout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
