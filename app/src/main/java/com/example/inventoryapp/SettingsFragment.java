@@ -25,8 +25,8 @@ public class SettingsFragment extends Fragment {
     ImageButton inf, toprofilepic;
     Button logout;
     TextView TVName;
-    CircleImageView profilepic;
-    String nama;
+    CircleImageView pic;
+    String nama, gambar;
     SharedPreferences sp;
 
 
@@ -36,7 +36,7 @@ public class SettingsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        profilepic = view.findViewById(R.id.profilepic);
+        pic = view.findViewById(R.id.pic);
         TVName = view.findViewById(R.id.TVName);
         inf = view.findViewById(R.id.btn_next1);
         toprofilepic = view.findViewById(R.id.toprofilepic);
@@ -44,11 +44,13 @@ public class SettingsFragment extends Fragment {
         sp = getActivity().getSharedPreferences("userData", Context.MODE_PRIVATE);
 
         nama = sp.getString("nama", null);
-        if (profilepic.equals(""))
-            Picasso.get().load("http://tkjb2019.com/mobile/image/profile_default.png").into(profilepic);
+
+        gambar = sp.getString("foto",null);
+        if (gambar.equals(""))
+            Picasso.get().load("https://tkjb2019.com/mobile/image/profile_default.png").into(pic);
         else
         {
-            Picasso.get().load("http://tkjb2019.com/mobile/image/"+profilepic).into(profilepic);
+            Picasso.get().load("https://tkjb2019.com/mobile/image/"+pic).into(pic);
         }
         TVName.setText(nama);
 

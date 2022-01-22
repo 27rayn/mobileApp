@@ -24,39 +24,39 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class InOutFragment extends Fragment {
+public class HistoryStockOutFragment extends Fragment {
 
     private Context mContext;
     ListView listhistory;
-    ArrayList<String>array_nama_barang,array_jumlahmasuk;
+    ArrayList<String> array_nama_barang,array_jumlahkeluar;
     FragmentManager fragmentManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_in_out, container, false);
-
-        listhistory = view.findViewById(R.id.stock_recyclerview);
+        View view = inflater.inflate(R.layout.fragment_history_stock_out, container, false);
 
 
-        getDataMasuk();
+
+        listhistory = view.findViewById(R.id.stock_historyout);
 
 
+        getDataKeluar();
         return view;
     }
+
     void initializeArray(){
         array_nama_barang      = new ArrayList<String>();
-        array_jumlahmasuk     = new ArrayList<String>();
+        array_jumlahkeluar     = new ArrayList<String>();
 
         array_nama_barang.clear();
-        array_jumlahmasuk.clear();
+        array_jumlahkeluar.clear();
     }
 
-
-    public void getDataMasuk(){
+    public void getDataKeluar(){
         initializeArray();
-        AndroidNetworking.get("https://tkjb2019.com/mobile/api_kelompok_2/sm/getbarangmasuk.php")
+        AndroidNetworking.get("https://tkjb2019.com/mobile/api_kelompok_2/sm/getbarangkeluar.php")
                 .setTag("Get Data")
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -71,11 +71,10 @@ public class InOutFragment extends Fragment {
                                 Log.d("respon", "" + ja);
                                 for (int i = 0; i < ja.length(); i++) {
                                     JSONObject jo = ja.getJSONObject(i);
-                                    array_nama_barang.add(jo.getString("nama_barang"));
-                                    array_jumlahmasuk.add(jo.getString("jumlah_masuk"));
-
+                                    array_nama_barang.add(jo.getString("nama_barang_keluar"));
+                                    array_jumlahkeluar.add(jo.getString("jumlah_keluar"));
                                 }
-                                HistoryInModel adapter = new HistoryInModel(getActivity(), array_nama_barang, array_jumlahmasuk);
+                                HistoryOutModel adapter = new HistoryOutModel(getActivity(), array_nama_barang, array_jumlahkeluar);
                                 listhistory.setAdapter(adapter);
 
 
@@ -96,6 +95,4 @@ public class InOutFragment extends Fragment {
                     }
                 });
     }
-
-
 }

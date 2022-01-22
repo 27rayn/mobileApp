@@ -3,30 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="24dp"
+    android:layout_marginBottom="20dp"
     >
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="01dp"
-        >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp">
-
             <ImageView
                 android:id="@+id/IVitem"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
                 android:src="@drawable/boxdefault"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -72,7 +55,4 @@
                 app:layout_constraintStart_toEndOf="@id/TVjmlstock"
                 app:layout_constraintTop_toBottomOf="@+id/TVjmlstock"
                 app:layout_constraintVertical_bias="1.0" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

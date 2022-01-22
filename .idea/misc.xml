@@ -17,6 +17,7 @@
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/drawable/card_custom.xml" value="0.2243421052631579" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/drawable/cardview_stock_info.xml" value="0.225" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/drawable/corneralertdialog.xml" value="0.24342105263157895" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/drawable/cornerloadingdialog.xml" value="0.24342105263157895" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/drawable/form.xml" value="0.20164473684210527" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/drawable/form_white.xml" value="0.24342105263157895" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/drawable/grayshape.xml" value="0.24342105263157895" />
@@ -64,14 +65,22 @@
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_toolbar_stock_in.xml" value="0.2332236842105263" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_toolbar_stock_out.xml" value="0.2332236842105263" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/bottomsheetlayout.xml" value="0.18" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_history_stock_out.xml" value="0.18" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_in_out.xml" value="0.2444078947368421" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_items.xml" value="0.1957894736842105" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_settings.xml" value="0.22" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_stock_in.xml" value="0.2243421052631579" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_stock_out.xml" value="0.2332236842105263" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/loading_layout.xml" value="0.2332236842105263" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/loading_layout_login.xml" value="0.2332236842105263" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/loading_layout_stockout.xml" value="0.2332236842105263" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/onboarding_layout.xml" value="0.2444078947368421" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/popupstockin.xml" value="0.5" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/popupstockout.xml" value="0.16151315789473683" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/recycle_item_inout.xml" value="0.25" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/recycle_item_inout_keluar.xml" value="0.10069444444444445" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/recycle_item_out.xml" value="0.25" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/recycle_view_items.xml" value="0.25" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/sd.xml" value="0.1" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/test.xml" value="0.1" />

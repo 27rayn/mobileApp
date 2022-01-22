@@ -6,44 +6,42 @@
     >
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardtop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="48dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            >
 
             <ImageView
-                android:id="@+id/IVin"
+                android:id="@+id/IVout"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:src="@drawable/ic_download"
+                android:src="@drawable/ic_upload"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/TVin"
+                android:id="@+id/TVout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:fontFamily="@font/inter_semibold"
-                android:text="Stock In"
+                android:text="Stock Out"
                 android:textColor="@color/primary"
                 android:textSize="16dp"
-                app:layout_constraintStart_toEndOf="@id/IVin"
-                app:layout_constraintTop_toTopOf="@+id/IVin" />
+                app:layout_constraintStart_toEndOf="@id/IVout"
+                app:layout_constraintTop_toTopOf="@+id/IVout" />
 
             <TextView
-                android:id="@+id/TVjmlitem"
+                android:id="@+id/TVjmlitemout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -51,11 +49,11 @@
                 android:text="1"
                 android:textColor="@color/black"
                 android:textSize="16dp"
-                app:layout_constraintStart_toStartOf="@+id/TVin"
-                app:layout_constraintTop_toBottomOf="@+id/TVin" />
+                app:layout_constraintStart_toStartOf="@+id/TVout"
+                app:layout_constraintTop_toBottomOf="@+id/TVout" />
 
             <TextView
-                android:id="@+id/item"
+                android:id="@+id/itemout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -63,11 +61,11 @@
                 android:text="Item"
                 android:textColor="@color/black"
                 android:textSize="16dp"
-                app:layout_constraintStart_toEndOf="@id/TVjmlitem"
-                app:layout_constraintTop_toTopOf="@id/TVjmlitem" />
+                app:layout_constraintStart_toEndOf="@id/TVjmlitemout"
+                app:layout_constraintTop_toTopOf="@id/TVjmlitemout" />
 
             <TextView
-                android:id="@+id/namaitem"
+                android:id="@+id/namaitemout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -75,8 +73,8 @@
                 android:text="Kahf - Eau de Toilette Parfume"
                 android:textColor="@color/graybd"
                 android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@id/TVjmlitem"
-                app:layout_constraintTop_toBottomOf="@id/TVjmlitem" />
+                app:layout_constraintStart_toStartOf="@id/TVjmlitemout"
+                app:layout_constraintTop_toBottomOf="@id/TVjmlitemout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

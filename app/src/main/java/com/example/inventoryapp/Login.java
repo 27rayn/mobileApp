@@ -31,7 +31,7 @@ public class Login extends AppCompatActivity {
     EditText emaillogin, passwordlogin;
     String email,password, nama, id, foto;
     TextView TVAlready1, TVAlready;
-    ProgressDialog progressDialog;
+    LoginCustomProgressDialog progressDialog;
     SharedPreferences sp;
 
     @Override
@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
 
         sp = getSharedPreferences("userData", MODE_PRIVATE);
 
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new LoginCustomProgressDialog(this);
 
         clickhereacc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +66,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                progressDialog.setMessage("Signing you in...");
-                progressDialog.setCancelable(false);
                 progressDialog.show();
 
                 email = emaillogin.getText().toString();

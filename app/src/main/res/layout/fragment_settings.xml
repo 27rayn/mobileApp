@@ -44,7 +44,7 @@
             />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profilepic"
+                android:id="@+id/pic"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="28dp"
@@ -62,9 +62,9 @@
                 android:text="@string/name"
                 android:textColor="#000"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@id/profilepic"
-                app:layout_constraintStart_toEndOf="@id/profilepic"
-                app:layout_constraintTop_toTopOf="@id/profilepic"
+                app:layout_constraintBottom_toBottomOf="@id/pic"
+                app:layout_constraintStart_toEndOf="@id/pic"
+                app:layout_constraintTop_toTopOf="@id/pic"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
@@ -76,10 +76,10 @@
                 android:text="Personal Info"
                 android:textColor="@color/graybd"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/profilepic"
-                app:layout_constraintStart_toEndOf="@id/profilepic"
+                app:layout_constraintBottom_toBottomOf="@id/pic"
+                app:layout_constraintStart_toEndOf="@id/pic"
                 app:layout_constraintTop_toBottomOf="@id/TVName"
-                app:layout_constraintTop_toTopOf="@id/profilepic"
+                app:layout_constraintTop_toTopOf="@id/pic"
                 app:layout_constraintVertical_bias="1.0" />
 
             <ImageButton
@@ -89,9 +89,9 @@
                 android:background="@drawable/btn_cust_corner_radius"
                 android:src="@drawable/ic_cheveron_right_blue"
                 app:circularflow_radiusInDP="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/profilepic"
+                app:layout_constraintBottom_toBottomOf="@+id/pic"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/profilepic" />
+                app:layout_constraintTop_toTopOf="@+id/pic" />
 
 <!--            Other settings-->
 
@@ -99,7 +99,7 @@
                 android:id="@+id/Set"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/profilepic"
+                app:layout_constraintTop_toBottomOf="@+id/pic"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="56dp"
                 android:text="@string/settings"

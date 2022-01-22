@@ -47,12 +47,12 @@ public class ItemsModel extends ArrayAdapter<String> {
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         //Load Custom Layout untuk list
-        View rowView= inflater.inflate(R.layout.recycle_view_items, null, true);
+        View Rview = inflater.inflate(R.layout.recycle_view_items, null, true);
 
         //Declarasi komponen
-        TextView nama       = rowView.findViewById(R.id.TVnamabarang);
-        TextView stok        =  rowView.findViewById(R.id.TVjmlstock);
-        ImageView foto     = rowView.findViewById(R.id.IVitem);
+        TextView nama       = Rview.findViewById(R.id.TVnamabarang);
+        TextView stok        =  Rview.findViewById(R.id.TVjmlstock);
+        ImageView foto     = Rview.findViewById(R.id.IVitem);
 
 
         //Set Parameter Value sesuai widget textview
@@ -60,7 +60,7 @@ public class ItemsModel extends ArrayAdapter<String> {
         stok.setText(vStok.get(position));
         if (vFoto.get(position).equals(""))
         {
-            Picasso.get().load("https://tkjb2019.com/mobile/image/profile_default.png").into(foto);
+            Picasso.get().load("https://tkjb2019.com/mobile/image/barang_user_R/boxdefault.png").into(foto);
         }
         else
         {
@@ -71,9 +71,9 @@ public class ItemsModel extends ArrayAdapter<String> {
         //load animasi untuk listview
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.down_from_top);
         animation.setDuration(500);
-        rowView.startAnimation(animation);
+        Rview.startAnimation(animation);
 
-        return rowView;
+        return Rview;
     }
 
 

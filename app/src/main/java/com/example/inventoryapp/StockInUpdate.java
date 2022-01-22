@@ -3,8 +3,12 @@ package com.example.inventoryapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,11 +39,12 @@ public class StockInUpdate extends AppCompatActivity {
     private Button applystockin, cancelstockin;
     private TextView TVitemsnamepopup, TVstockinpopup;
 
-    int count = 0;
+    CustomProgressDialog customProgressDialog;
+
+    String id_barang,nama_barang,jumlah_masuk,tanggal_masuk;
     Button BTNincrement, BTNdecrement;
-    String number;
 
-
+    ProgressDialog progressDialog;
     ImageButton backtoolbarstockin;
     ArrayList<String> nama=new ArrayList<>();
     ArrayList<String>perusahaan=new ArrayList<>();
@@ -53,6 +58,8 @@ public class StockInUpdate extends AppCompatActivity {
 
         listitemstockin = findViewById(R.id.listitemstockin);
         backtoolbarstockin = findViewById(R.id.backtoolbarstockin);
+
+        customProgressDialog = new CustomProgressDialog(StockInUpdate.this);
 
         backtoolbarstockin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,28 +145,6 @@ public class StockInUpdate extends AppCompatActivity {
     }
 
 
-//    public boolean getNumbers(){
-//
-//        updateStockIn = (EditText) findViewById(R.id.inputstockquantity);
-//
-//        String number = updateStockIn.getText().toString();
-//
-//        return true;
-//    }
-
-//    public void increment (View view){
-//
-//    }
-//
-//    public void decrement (View view){
-//        if(getNumbers()&&count<=0){
-//            count = 0;
-//        }else{
-//            int y = count--;
-//            updateStockIn.setText(Integer.toString(y));
-//        }
-//    }
-
     public void createUpdateStockDialog(){
 
         dialogBuilder = new AlertDialog.Builder(this);
@@ -168,32 +153,26 @@ public class StockInUpdate extends AppCompatActivity {
         TVstockinpopup = stockUpdatePopupView.findViewById(R.id.TVstockinpopup);
         TVitemsnamepopup = stockUpdatePopupView.findViewById(R.id.TVitemsnamepopup);
         updateStockIn = stockUpdatePopupView.findViewById(R.id.inputstockquantity);
-//        BTNincrement = stockUpdatePopupView.findViewById(R.id.BTNincrement);
-//        BTNdecrement = stockUpdatePopupView.findViewById(R.id.BTNdecrement);
         applystockin = stockUpdatePopupView.findViewById(R.id.ApplyStockIn);
         cancelstockin = stockUpdatePopupView.findViewById(R.id.CancelStockIn);
 
-        updateStockIn.setBackgroundResource(R.color.white);
+        applystockin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-//        BTNincrement.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                    count++;
-//                    updateStockIn.get
-//                }
-//        });
+                customProgressDialog.show();
 
-//        BTNdecrement.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(count<=0){
-//                    count = 0;
-//                }else{
-//                    count--;
-//                    updateStockIn.setText(String.valueOf(count));
-//                }
-//            }
-//        });
+                jumlah_masuk = updateStockIn.getText().toString();
+                nama_barang = TVitemsnamepopup.getText().toString();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        validasiData();
+                    }
+                },1000);
+            }
+        });
 
         cancelstockin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,6 +185,80 @@ public class StockInUpdate extends AppCompatActivity {
         dialog = dialogBuilder.create();
         dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.corneralertdialog));
         dialog.show();
+    }
+
+    void validasiData(){
+        if(jumlah_masuk.equals("")) {
+            customProgressDialog.dismiss();
+            Toast.makeText(StockInUpdate.this, "Sorry your input is empty, we cannot update your items", Toast.LENGTH_SHORT).show();
+        }else {
+            kirimData();
+        }
+    }
+
+    void kirimData(){
+        AndroidNetworking.post("https://tkjb2019.com/mobile/api_kelompok_2/sm/barangmasuk.php")
+                .addBodyParameter("nama_barang",""+nama_barang)
+                .addBodyParameter("jumlah_masuk",""+jumlah_masuk)
+                .setPriority(Priority.MEDIUM)
+                .setTag("Tambah Data")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        customProgressDialog.dismiss();
+                        Log.d("cekTambah",""+response);
+                        try {
+                            Boolean status = response.getBoolean("status");
+                            String pesan = response.getString("result");
+                            Toast.makeText(StockInUpdate.this, ""+pesan, Toast.LENGTH_SHORT).show();
+                            Log.d("status",""+status);
+                            if(status){
+//                                Intent toHome;
+//                                toHome = new Intent(StockInUpdate.this, MainActivity.class);
+//                                startActivity(toHome);
+//                                new androidx.appcompat.app.AlertDialog.Builder(Login.this)
+//                                        .setMessage("Login Success !")
+////                                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+////                                            @Override
+////                                            public void onClick(DialogInterface dialog, int which) {
+////                                                //Intent i = getIntent();
+////                                                //setResult(RESULT_CANCELED,i);
+////                                                //add_mahasiswa.this.finish();
+////
+////                                            }
+////                                        })
+//                                        .setCancelable(false)
+//                                        .show();
+
+
+                            }
+                            else{
+                                new AlertDialog.Builder(StockInUpdate.this)
+                                        .setMessage("Invalid email and password")
+                                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                //Intent i = getIntent();
+                                                //setResult(RESULT_CANCELED,i);
+                                                //add_mahasiswa.this.finish();
+                                            }
+                                        })
+                                        .setCancelable(false)
+                                        .show();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.d("ErrorTambahData",""+anError.getErrorBody());
+                    }
+                });
     }
 
 }

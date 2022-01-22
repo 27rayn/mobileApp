@@ -3,7 +3,10 @@ package com.example.inventoryapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,8 +37,11 @@ public class StockOutUpdate extends AppCompatActivity {
     private Button applystockout, cancelstockout;
     private TextView TVitemsnamepopup, TVstockoutpopup;
 
-
+    CustomProgressDialog customProgressDialog;
     ImageButton backtoolbarstockout;
+
+    String nama_barang,jumlah_keluar;
+    ProgressDialog progressDialog;
     ArrayList<String> nama=new ArrayList<>();
     ArrayList<String>perusahaan=new ArrayList<>();
     ArrayList<String>foto=new ArrayList<>();
@@ -45,6 +51,8 @@ public class StockOutUpdate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_out_update);
+
+        customProgressDialog = new CustomProgressDialog(StockOutUpdate.this);
 
         listitemstockout = findViewById(R.id.listitemstockin);
         backtoolbarstockout = findViewById(R.id.backtoolbarstockin);
@@ -97,6 +105,8 @@ public class StockOutUpdate extends AppCompatActivity {
                                         createUpdateStockDialog();
                                         TVitemsnamepopup.setText(nama.get(position));
 
+
+
 //                                        Setelah proses koneksi keserver selesai, maka aplikasi akan
 //                                        berpindah class
 //                                        DataActivity.class dan membawa/mengirim data -data
@@ -141,6 +151,25 @@ public class StockOutUpdate extends AppCompatActivity {
 
         updateStockOut.setBackgroundResource(R.color.white);
 
+        applystockout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                jumlah_keluar = updateStockOut.getText().toString();
+                nama_barang = TVitemsnamepopup.getText().toString();
+                customProgressDialog.show();
+
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        validasiData();
+                    }
+                },1000);
+            }
+        });
+
         cancelstockout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,5 +182,77 @@ public class StockOutUpdate extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.corneralertdialog));
         dialog.show();
     }
+    void validasiData(){
+        if(jumlah_keluar.equals("")) {
+            customProgressDialog.dismiss();
+            Toast.makeText(StockOutUpdate.this, "Sorry your input is empty, we cannot update your items", Toast.LENGTH_SHORT).show();
+        }else {
+            kirimData();
+        }
+    }
 
+    void kirimData(){
+        AndroidNetworking.post("https://tkjb2019.com/mobile/api_kelompok_2/sm/barangkeluar.php")
+                .addBodyParameter("nama_barang_keluar",""+nama_barang)
+                .addBodyParameter("jumlah_keluar",""+jumlah_keluar)
+                .setPriority(Priority.MEDIUM)
+                .setTag("Tambah Data")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        customProgressDialog.dismiss();
+                        Log.d("cekTambah",""+response);
+                        try {
+                            Boolean status = response.getBoolean("status");
+                            String pesan = response.getString("result");
+                            Toast.makeText(StockOutUpdate.this, ""+pesan, Toast.LENGTH_SHORT).show();
+                            Log.d("status",""+status);
+                            if(status){
+//                                Intent toHome;
+//                                toHome = new Intent(StockInUpdate.this, MainActivity.class);
+//                                startActivity(toHome);
+//                                new androidx.appcompat.app.AlertDialog.Builder(Login.this)
+//                                        .setMessage("Login Success !")
+////                                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+////                                            @Override
+////                                            public void onClick(DialogInterface dialog, int which) {
+////                                                //Intent i = getIntent();
+////                                                //setResult(RESULT_CANCELED,i);
+////                                                //add_mahasiswa.this.finish();
+////
+////                                            }
+////                                        })
+//                                        .setCancelable(false)
+//                                        .show();
+
+
+                            }
+                            else{
+//                                new AlertDialog.Builder(StockOutUpdate.this)
+//                                        .setMessage("Invalid email and password")
+//                                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                //Intent i = getIntent();
+//                                                //setResult(RESULT_CANCELED,i);
+//                                                //add_mahasiswa.this.finish();
+//                                            }
+//                                        })
+//                                        .setCancelable(false)
+//                                        .show();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        Log.d("ErrorTambahData",""+anError.getErrorBody());
+                    }
+                });
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.inventoryapp;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -34,12 +35,9 @@ import java.util.HashMap;
 
 public class ItemsFragment extends Fragment {
 
-    private ListView recyclerbarang;
-    private ItemsModel adapter;
-    ArrayList<String>nama=new ArrayList<>();
-    ArrayList<String>perusahaan=new ArrayList<>();
-    ArrayList<String>foto=new ArrayList<>();
-    ArrayList<String>stok=new ArrayList<>();
+    ListView recyclerbarang;
+    ArrayList<String>array_nama, array_perusahaan, array_foto, array_stok;
+    private Context mContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,24 +69,23 @@ public class ItemsFragment extends Fragment {
 
         getData();
 
-
         return view;
-
     }
 
     void initializeArray(){
-        nama      = new ArrayList<String>();
-        perusahaan       = new ArrayList<String>();
-        foto   = new ArrayList<String>();
-        stok     = new ArrayList<String>();
+        array_nama      = new ArrayList<String>();
+        array_perusahaan       = new ArrayList<String>();
+        array_foto   = new ArrayList<String>();
+        array_stok     = new ArrayList<String>();
 
-        nama.clear();
-        perusahaan.clear();
-        foto.clear();
-        stok.clear();
+        array_nama.clear();
+        array_perusahaan.clear();
+        array_foto.clear();
+        array_stok.clear();
     }
 
     public void getData(){
+        initializeArray();
         AndroidNetworking.get("https://tkjb2019.com/mobile/api_kelompok_2/sm/getDatabarang.php")
                 .setTag("Get Data")
                 .setPriority(Priority.MEDIUM)
@@ -104,39 +101,15 @@ public class ItemsFragment extends Fragment {
                                 Log.d("respon", "" + ja);
                                 for (int i = 0; i < ja.length(); i++) {
                                     JSONObject jo = ja.getJSONObject(i);
-                                    nama.add(jo.getString("nama"));
-                                    perusahaan.add(jo.getString("perusahaan"));
-                                    foto.add(jo.getString("foto"));
-                                    stok.add(jo.getString("stok"));
+                                    array_nama.add(jo.getString("nama"));
+                                    array_perusahaan.add(jo.getString("perusahaan"));
+                                    array_foto.add(jo.getString("foto"));
+                                    array_stok.add(jo.getString("stok"));
                                 }
 
-                                ItemsModel adapter = new ItemsModel(getActivity(), nama, perusahaan, foto, stok);
+                               final ItemsModel adapter = new ItemsModel(getActivity(), array_nama, array_perusahaan, array_foto, array_stok);
                                 recyclerbarang.setAdapter(adapter);
 
-//                                //Menampilkan data berbentuk adapter menggunakan class CLVDataUser
-//                                ItemsModel adapter = new ItemsModel(getActivity(), array_nama,array_foto,array_stok);
-//                                //Set adapter to list
-//                                itemsList.setAdapter(adapter);
-
-                                //edit and delete
-//                                recyclerbarang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                                    @Override
-//                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                                        Log.d("TestKlik", "" + nama.get(position));
-//                                        Toast.makeText(getActivity(), nama.get(position), Toast.LENGTH_SHORT).show();
-//
-////                                        Setelah proses koneksi keserver selesai, maka aplikasi akan
-////                                        berpindah class
-////                                        DataActivity.class dan membawa/mengirim data -data
-////                                        hasil query dari server.
-//                                        Intent i = new Intent(getActivity(), StockInUpdate.class);
-//                                        i.putExtra("nama", nama.get(position));
-//                                        i.putExtra("perusahaan", perusahaan.get(position));
-//                                        i.putExtra("foto", foto.get(position));
-//                                        i.putExtra("stok", stok.get(position));
-//                                        startActivity(i);
-//                                    }
-//                                });
 
                             } else {
                                 Toast.makeText(getActivity(), "Gagal Mengambil Data", Toast.LENGTH_SHORT).show();
