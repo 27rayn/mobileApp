@@ -26,7 +26,7 @@ public class SettingsFragment extends Fragment {
     Button logout;
     TextView TVName;
     CircleImageView pic;
-    String nama, gambar;
+    String nama, foto;
     SharedPreferences sp;
 
 
@@ -45,12 +45,12 @@ public class SettingsFragment extends Fragment {
 
         nama = sp.getString("nama", null);
 
-        gambar = sp.getString("foto",null);
-        if (gambar.equals(""))
+        foto = sp.getString("foto",null);
+        if (foto.equals(""))
             Picasso.get().load("https://tkjb2019.com/mobile/image/profile_default.png").into(pic);
         else
         {
-            Picasso.get().load("https://tkjb2019.com/mobile/image/"+pic).into(pic);
+            Picasso.get().load("http://tkjb2019.com/mobile/image/profile_picture_R/").into(pic);
         }
         TVName.setText(nama);
 
@@ -91,4 +91,6 @@ public class SettingsFragment extends Fragment {
 
         return view;
     }
+
+
 }

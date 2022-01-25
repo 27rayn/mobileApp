@@ -8,6 +8,7 @@
     android:background="@color/white"
     tools:context=".edit_profile">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,6 +30,7 @@
 <!--            android:textSize="18sp"-->
 <!--            android:textColor="@color/black"-->
 <!--            />-->
+
 
         <ImageButton
             android:id="@+id/backbutton"
@@ -94,7 +96,7 @@
             app:layout_constraintStart_toStartOf="@id/useremail"
             app:layout_constraintBottom_toTopOf="@id/useremail"
             android:layout_marginTop="32dp"
-            android:text="Email"
+            android:text="Nama"
             android:textSize="14sp"
             android:textColor="@color/primarydark"
             android:fontFamily="@font/inter_regular"
@@ -106,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="14dp"
             android:layout_marginTop="4dp"
-            android:hint="@string/email"
+            android:hint="Nama"
             app:boxBackgroundColor="@color/softblue"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:hintTextColor="@color/primary"
@@ -114,26 +116,27 @@
             app:layout_constraintTop_toBottomOf="@id/textviewemail"
             app:layout_constraintStart_toStartOf="parent"
             >
+
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/namauser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textEmailAddress"
-                />
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textviewphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/userphone"
-            app:layout_constraintStart_toStartOf="@id/useremail"
-            app:layout_constraintBottom_toBottomOf="@id/useremail"
             android:layout_marginTop="16dp"
-            android:text="Phone Number"
-            android:textSize="14sp"
-            android:textColor="@color/primarydark"
             android:fontFamily="@font/inter_regular"
-            />
+            android:text="Email"
+            android:textColor="@color/primarydark"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/useremail"
+            app:layout_constraintStart_toStartOf="@id/useremail"
+            app:layout_constraintTop_toTopOf="@id/userphone"
+            app:layout_constraintVertical_bias="0.505" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/userphone"
@@ -141,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="14dp"
             android:layout_marginTop="4dp"
-            android:hint="0819445690"
+            android:hint="Email"
             app:boxBackgroundColor="@color/softblue"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:hintTextColor="@color/primary"
@@ -149,11 +152,12 @@
             app:layout_constraintTop_toBottomOf="@id/textviewphone"
             app:layout_constraintStart_toStartOf="parent"
             >
+
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/emailuser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textEmailAddress"
-                />
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -184,11 +188,12 @@
             app:layout_constraintTop_toBottomOf="@id/textviewpassword"
             app:layout_constraintStart_toStartOf="parent"
             >
+
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pwduser"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textEmailAddress"
-                />
+                android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -203,6 +208,21 @@
             app:layout_constraintTop_toBottomOf="@id/userpassword"
             app:layout_constraintStart_toStartOf="@id/userpassword"
             />
+
+        <Button
+            android:id="@+id/savedata"
+            android:layout_width="354dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/btn_primary"
+            android:fontFamily="@font/inter_medium"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

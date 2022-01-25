@@ -23,6 +23,7 @@
 
 
     <ListView
+        android:scrollbars="none"
         android:divider="@null"
         android:id="@+id/stock_historyout"
         android:layout_width="match_parent"

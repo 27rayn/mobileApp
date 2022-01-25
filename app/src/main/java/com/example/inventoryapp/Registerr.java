@@ -30,7 +30,7 @@ public class Registerr extends AppCompatActivity {
     Button clickhere, createacc;
     EditText ETSU1, ETSU2, ETSU3, ETSU4;
     String username,email,password,re_type_password;
-    ProgressDialog progressDialog;
+    RegisterCustomProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +45,11 @@ public class Registerr extends AppCompatActivity {
         createacc = findViewById(R.id.create_btn);
         clickhere = findViewById(R.id.btn_clickhere);
 
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new RegisterCustomProgressDialog(this);
 
         createacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog.setMessage("Signing you up...");
                 progressDialog.setCancelable(false);
                 progressDialog.show();
 
@@ -185,7 +184,7 @@ public class Registerr extends AppCompatActivity {
                                 new androidx.appcompat.app.AlertDialog.Builder(Registerr.this)
                                         .setMessage("You've been registered!")
                                         .setCancelable(false)
-                                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+                                        .setPositiveButton("Login", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
 //                                                Intent i = getIntent();

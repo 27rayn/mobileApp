@@ -147,7 +147,6 @@ public class Login extends AppCompatActivity {
 //                                        .setCancelable(false)
 //                                        .show();
 
-
                             }
                             else{
                                 new AlertDialog.Builder(Login.this)

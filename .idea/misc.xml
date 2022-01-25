@@ -57,6 +57,7 @@
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_pencipta.xml" value="0.11407103825136612" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_registerr.xml" value="0.33" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_scan.xml" value="0.21550546448087432" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.19605263157894737" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_stock_in_update.xml" value="0.2332236842105263" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/activity_stock_out_update.xml" value="0.2243421052631579" />
@@ -73,7 +74,9 @@
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_stock_in.xml" value="0.2243421052631579" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/fragment_stock_out.xml" value="0.2332236842105263" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/loading_layout.xml" value="0.2332236842105263" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/loading_layout_additems.xml" value="0.21550546448087432" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/loading_layout_login.xml" value="0.2332236842105263" />
+        <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/loading_layout_register.xml" value="0.21550546448087432" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/loading_layout_stockout.xml" value="0.2332236842105263" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/onboarding_layout.xml" value="0.2444078947368421" />
         <entry key="..\:/Materi Kuliah/Semester 5/Mobile/InventoryApp/app/src/main/res/layout/popupstockin.xml" value="0.5" />

@@ -59,7 +59,15 @@ public class HomeFragment extends Fragment {
         day();
         nowdate();
 
-        registeritems.setOnClickListener(new View.OnClickListener() {
+        opencam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), scan.class);
+                startActivity(intent);
+            }
+        });
+
+                registeritems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent toAdditems;
@@ -77,13 +85,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        opencam.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent open_cam = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(open_cam, 100);
-            }
-        });
 
         stockout.setOnClickListener(new View.OnClickListener() {
             @Override
