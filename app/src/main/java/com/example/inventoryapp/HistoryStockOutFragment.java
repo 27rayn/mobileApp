@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -30,6 +32,8 @@ public class HistoryStockOutFragment extends Fragment {
     ListView listhistory;
     ArrayList<String> array_nama_barang,array_jumlahkeluar;
     FragmentManager fragmentManager;
+    TextView emptypage;
+    ImageView imageempty;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,7 +41,8 @@ public class HistoryStockOutFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history_stock_out, container, false);
 
-
+        emptypage = view.findViewById(R.id.emptypage);
+        imageempty = view.findViewById(R.id.imageempty);
 
         listhistory = view.findViewById(R.id.stock_historyout);
 
@@ -77,10 +82,12 @@ public class HistoryStockOutFragment extends Fragment {
                                 HistoryOutModel adapter = new HistoryOutModel(getActivity(), array_nama_barang, array_jumlahkeluar);
                                 listhistory.setAdapter(adapter);
 
+                                imageempty.setVisibility(View.GONE);
+                                emptypage.setVisibility(View.GONE);
 
                             } else {
-                                Toast.makeText(getActivity(), "Gagal Mengambil Data", Toast.LENGTH_SHORT).show();
-
+                                imageempty.setVisibility(View.VISIBLE);
+                                emptypage.setVisibility(View.VISIBLE);
                             }
 
                         } catch (Exception e) {

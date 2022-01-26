@@ -66,4 +66,21 @@
         android:drawablePadding="16dp"
         />
 
+    <Button
+        android:id="@+id/BTNscan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/BTNmanualinput"
+        android:layout_marginTop="16dp"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:text="Scan Input"
+        android:textColor="@color/black"
+        android:fontFamily="@font/inter_regular"
+        android:textAllCaps="false"
+        android:textAlignment="textStart"
+        android:drawableStart="@drawable/ic_scan"
+        android:drawableEnd="@drawable/ic_cheveron_right"
+        android:drawablePadding="16dp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

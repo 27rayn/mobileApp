@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="8dp"
     android:background="@color/white"
     tools:context=".StockInUpdate">
 
@@ -66,6 +67,7 @@
         app:layout_constraintTop_toBottomOf="@id/stockintoolbar"
         android:id="@+id/listitemstockin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

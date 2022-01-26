@@ -1,11 +1,12 @@
 package com.example.inventoryapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
@@ -31,6 +32,9 @@ public class scan extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(scan.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        Intent getScan = new Intent(scan.this, AddItems.class);
+                        getScan.putExtra("scan", result.getText());
+                        startActivity(getScan);
                     }
                 });
             }

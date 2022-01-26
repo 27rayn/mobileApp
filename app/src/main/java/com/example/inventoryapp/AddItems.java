@@ -34,7 +34,7 @@ public class AddItems extends AppCompatActivity {
 
     Button generate, saveaddeditem;
     EditText barcode,itemsss,stockitem,supplieret;
-    String id, nama, perusahaan, stok;
+    String id, nama, perusahaan, stok, scan;
     ProgressDialogAddItems customProgressDialog;
 
     @Override
@@ -48,6 +48,10 @@ public class AddItems extends AppCompatActivity {
         generate = findViewById(R.id.generate);
         saveaddeditem = findViewById(R.id.saveaaddeditem);
         barcode = findViewById(R.id.barcode);
+
+        scan = getIntent().getStringExtra("scan");
+
+        barcode.setText(scan);
 
         generate.addTextChangedListener(addItemsWatcher);
         itemsss.addTextChangedListener(addItemsWatcher);
@@ -91,9 +95,11 @@ public class AddItems extends AppCompatActivity {
             stok  = stockitem.getText().toString().trim();
             perusahaan = supplieret.getText().toString().trim();
 
+
             saveaddeditem.setEnabled
                     (!id.isEmpty() && !nama.isEmpty() && !perusahaan.isEmpty() && !stok.isEmpty());
         }
+
 
         @Override
         public void afterTextChanged(Editable s) {
@@ -178,6 +184,7 @@ public class AddItems extends AppCompatActivity {
 
         Button BTNgeneratebarcode = dialog.findViewById(R.id.BTNgeneratebarcode);
         Button BTNmanualinput = dialog.findViewById(R.id.BTNmanualinput);
+        Button BTNscan = dialog.findViewById(R.id.BTNscan);
         Button closebottomsheet = dialog.findViewById(R.id.closebottomsheet);
 
         BTNgeneratebarcode.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +201,14 @@ public class AddItems extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        BTNscan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent toScan = new Intent(AddItems.this, scan.class);
+                startActivity(toScan);
             }
         });
 

@@ -5,17 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.google.android.material.tabs.TabLayout;
 
 import nl.joery.animatedbottombar.AnimatedBottomBar;
 
@@ -91,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.in:
 //                        layout_tab.setVisibility(View.VISIBLE);
 //                        frameLayout.setVisibility(View.GONE);
-                        fragment = new InOutFragment();
+                        fragment = new HistoryStockInFragment();
                         break;
 
                     case R.id.out:

@@ -50,7 +50,7 @@ public class SplashScreen extends AppCompatActivity {
                   Intent aftersplash = new Intent(SplashScreen.this,OnBoarding.class);
                   startActivity(aftersplash);
               } else{
-                  Intent aftersplash = new Intent(SplashScreen.this,Login.class);
+                  Intent aftersplash = new Intent(SplashScreen.this,Registerr.class);
                   startActivity(aftersplash);
               }
               finish();

@@ -1,16 +1,21 @@
 package com.example.inventoryapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -24,23 +29,28 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class InOutFragment extends Fragment {
+public class HistoryStockInFragment extends Fragment {
 
     private Context mContext;
     ListView listhistory;
     ArrayList<String>array_nama_barang,array_jumlahmasuk;
     FragmentManager fragmentManager;
+    TextView emptypage, tvrec;
+    ImageView imageempty;
+    String stockinnum;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_in_out, container, false);
+        View view = inflater.inflate(R.layout.fragment_history_stock_in, container, false);
 
         listhistory = view.findViewById(R.id.stock_recyclerview);
-
-
+        emptypage = view.findViewById(R.id.emptypage);
+        imageempty = view.findViewById(R.id.imageempty);
+        tvrec = view.findViewById(R.id.tvrec);
         getDataMasuk();
+
 
 
         return view;
@@ -77,11 +87,13 @@ public class InOutFragment extends Fragment {
                                 }
                                 HistoryInModel adapter = new HistoryInModel(getActivity(), array_nama_barang, array_jumlahmasuk);
                                 listhistory.setAdapter(adapter);
+                                tvrec.setVisibility(View.VISIBLE);
+                                emptypage.setVisibility(View.INVISIBLE);
 
 
                             } else {
-                                Toast.makeText(getActivity(), "Gagal Mengambil Data", Toast.LENGTH_SHORT).show();
-
+                                imageempty.setVisibility(View.VISIBLE);
+                                emptypage.setVisibility(View.VISIBLE);
                             }
 
                         } catch (Exception e) {
@@ -96,6 +108,7 @@ public class InOutFragment extends Fragment {
                     }
                 });
     }
+
 
 
 }

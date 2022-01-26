@@ -41,8 +41,6 @@ public class ItemsModel extends ArrayAdapter<String> {
     }
 
 
-
-
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
@@ -75,6 +73,5 @@ public class ItemsModel extends ArrayAdapter<String> {
 
         return Rview;
     }
-
-
+    
 }

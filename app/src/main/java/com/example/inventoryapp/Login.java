@@ -49,7 +49,6 @@ public class Login extends AppCompatActivity {
 
 
         sp = getSharedPreferences("userData", MODE_PRIVATE);
-
         progressDialog = new LoginCustomProgressDialog(this);
 
         clickhereacc.setOnClickListener(new View.OnClickListener() {
@@ -222,6 +221,7 @@ public class Login extends AppCompatActivity {
                     }
                 });
     }
+
 
 
 
